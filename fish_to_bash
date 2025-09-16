@@ -2,7 +2,7 @@
 
 fish_history_file="$HOME/.local/share/fish/fish_history"
 
-bash_history_file="$HOME/.bash_history
+bash_history_file="$HOME/.bash_history"
 
 if [ ! -f "$fish_history_file" ]; then
     echo "Fish history file not found at $fish_history_file"
