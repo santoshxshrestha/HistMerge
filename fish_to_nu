@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+fish_history_file="$HOME/.local/share/fish/fish_history"
+
+nu_history_file="$HOME/.config/nushell/history.txt"
+
+if [ ! -f "$fish_history_file" ]; then
+    echo "Fish history file not found at $fish_history_file"
+    exit 1
+fi
+
+if [ ! -f "$nu_history_file" ]; then
+    echo "Nu history file not found at $nu_history_file"
+    exit 1
+fi
+
+grep '^- cmd: ' "$fish_history_file" | sed 's/^- cmd: //g' | awk '!seen[$0]++' >>"$nu_history_file"
